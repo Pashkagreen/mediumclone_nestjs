@@ -4,9 +4,10 @@ import { AppService } from '@app/app.service';
 import { TagModule } from '@app/tag/tag.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import OrmConfig from '@app/ormconfig'
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({...OrmConfig, autoLoadEntities: true }),TagModule],
+  imports: [TypeOrmModule.forRoot({...OrmConfig, autoLoadEntities: true }),TagModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
