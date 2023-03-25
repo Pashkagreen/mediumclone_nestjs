@@ -8,6 +8,7 @@ import { CreateUserDto } from './dto/createUser.dto';
 import { UserEntity } from './user.entity';
 import { UserResponseInterface } from './types/userResponse.interface';
 import { LoginUserDto } from './dto/loginUser.dto';
+import { UpdateUserDto } from './dto/updateUser.dto';
 import { config } from 'dotenv';
 
 config();
@@ -73,5 +74,11 @@ export class UserService {
         token: this.generateJWT(user)
       }
     }
+  }
+
+  async updateUser(currentUserId: number, updateUserDto: UpdateUserDto): Promise<UserEntity> {
+    const user = await this.findUserById(currentUserId)
+    Object.assign(user, updateUserDto)
+    return await this.userRepository.save(user)
   }
 }
