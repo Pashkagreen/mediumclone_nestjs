@@ -7,9 +7,10 @@ import OrmConfig from '@app/ormconfig'
 import { UserModule } from './user/user.module';
 import { AuthMiddleware } from './user/middlewares/auth.middleware';
 import { ArticleModule } from './article/article.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({...OrmConfig, autoLoadEntities: true }),TagModule, UserModule, ArticleModule],
+  imports: [TypeOrmModule.forRoot({...OrmConfig, autoLoadEntities: true }),TagModule, UserModule, ArticleModule, ProfileModule],
   controllers: [AppController],
   providers: [AppService],
 })
